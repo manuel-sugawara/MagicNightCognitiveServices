@@ -55,6 +55,7 @@ namespace MagicNightAzureApplication {
             
             ///
             ///  Classify images via Cognitive Services and cache images locally
+            ///  Waiting cursor will display until loading is complete
             /// 
 
             // Display normal cursor
