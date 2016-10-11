@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace MagicNightAzureApplication {
     public partial class Form1 : System.Windows.Forms.Form {
@@ -7,9 +8,8 @@ namespace MagicNightAzureApplication {
 
         public Form1() {
             InitializeComponent();
-            _magicNight = new MagicNight(new[] {
-                this.pictureBox1, this.pictureBox2, this.pictureBox3
-            });
+            Application.UseWaitCursor = true;
+            _magicNight = new MagicNight(new[] { this.pictureBox1, this.pictureBox2, this.pictureBox3 }, () => Application.UseWaitCursor = false);
         }
 
         private void SendChangeEvent(object sender, EventArgs e) {
