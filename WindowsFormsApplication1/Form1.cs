@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MagicNightAzureApplication {
@@ -16,7 +10,13 @@ namespace MagicNightAzureApplication {
 
         private void SendChangeEvent(object sender, EventArgs e) {
             var comboBox = (ComboBox)sender;
-            MagicNight.ChangeFilters(new [] {this.pictureBox1, this.pictureBox2, this.pictureBox3}, comboBox.Name, comboBox.Text);
+            MagicNight.GenderEnum gender;
+            MagicNight.EmotionEnum emotion;
+            Enum.TryParse(this.GenderCombo.Text, out gender);
+            Enum.TryParse(this.emotionCombo.Text, out emotion);
+            MagicNight.ChangeFilters(new[] {
+                this.pictureBox1, this.pictureBox2, this.pictureBox3
+            }, gender, emotion);
         }
 
         private void ResizePictureBoxes(object sender = null, EventArgs e = null) {
