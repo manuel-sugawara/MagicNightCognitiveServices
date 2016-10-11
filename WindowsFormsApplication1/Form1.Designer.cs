@@ -43,7 +43,7 @@ namespace MagicNightAzureApplication {
             // 
             this.pictureBox1.Location = new System.Drawing.Point(12, 57);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(381, 526);
+            this.pictureBox1.Size = new System.Drawing.Size(354, 526);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -54,12 +54,14 @@ namespace MagicNightAzureApplication {
             this.GenderCombo.DropDownWidth = 200;
             this.GenderCombo.FormattingEnabled = true;
             this.GenderCombo.Items.AddRange(new object[] {
+            "All",
             "Male",
             "Female"});
             this.GenderCombo.Location = new System.Drawing.Point(12, 29);
             this.GenderCombo.Name = "GenderCombo";
             this.GenderCombo.Size = new System.Drawing.Size(200, 21);
             this.GenderCombo.TabIndex = 0;
+            this.GenderCombo.SelectedIndex = 0;
             this.GenderCombo.SelectedIndexChanged += new System.EventHandler(this.SendChangeEvent);
             // 
             // emotionCombo
@@ -68,6 +70,7 @@ namespace MagicNightAzureApplication {
             this.emotionCombo.DropDownWidth = 200;
             this.emotionCombo.FormattingEnabled = true;
             this.emotionCombo.Items.AddRange(new object[] {
+            "All",
             "Anger",
             "Contempt",
             "Disgust",
@@ -80,6 +83,7 @@ namespace MagicNightAzureApplication {
             this.emotionCombo.Name = "emotionCombo";
             this.emotionCombo.Size = new System.Drawing.Size(225, 21);
             this.emotionCombo.TabIndex = 1;
+            this.emotionCombo.SelectedIndex = 0;
             this.emotionCombo.SelectedIndexChanged += new System.EventHandler(this.SendChangeEvent);
             // 
             // genderLabel
@@ -102,18 +106,18 @@ namespace MagicNightAzureApplication {
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(400, 57);
+            this.pictureBox2.Location = new System.Drawing.Point(372, 56);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(371, 526);
+            this.pictureBox2.Size = new System.Drawing.Size(355, 526);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(778, 57);
+            this.pictureBox3.Location = new System.Drawing.Point(733, 56);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(312, 526);
+            this.pictureBox3.Size = new System.Drawing.Size(355, 526);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 6;
             this.pictureBox3.TabStop = false;
@@ -137,7 +141,6 @@ namespace MagicNightAzureApplication {
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
-            ResizePictureBoxes();
             this.PerformLayout();
 
         }
