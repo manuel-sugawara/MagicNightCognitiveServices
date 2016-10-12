@@ -28,13 +28,13 @@ namespace WindowsFormsApplication1 {
             _emotionServiceClient = new EmotionServiceClient(emotionKey);
         }
 
-        public async Task<ImageMetaData> AnalyzeImage(string imageFilePath) {
+        public ImageMetaData AnalyzeImage(string imageFilePath) {
             using(Stream imageFileStream = File.OpenRead(imageFilePath)) {
-                var faces = await _faceServiceClient.DetectAsync(imageFileStream);
+                var faces =  _faceServiceClient.DetectAsync(imageFileStream).Result;
                 var theFace = faces[0];
                 var gender = theFace.FaceAttributes.Gender;
                 imageFileStream.Seek(0, SeekOrigin.Begin);
-                var emotions = await _emotionServiceClient.RecognizeAsync(imageFileStream);
+                var emotions = _emotionServiceClient.RecognizeAsync(imageFileStream).Result;
                 var score = emotions[0].Scores;
                 var emotion = FindEmotion(score);
                 return new ImageMetaData(gender, emotion);
