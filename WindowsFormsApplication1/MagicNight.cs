@@ -32,14 +32,14 @@ namespace MagicNightAzureApplication {
 
             //--- Fields ---
             public readonly Image Image;
-            public readonly GenderEnum Gender = GenderEnum.All;
-            public readonly EmotionEnum Emotion = EmotionEnum.Happiness;
+            public readonly GenderEnum Gender;
+            public readonly EmotionEnum Emotion;
 
             //--- Constructors ---
-            public AnalyzedImage(string filename) {
+            public AnalyzedImage(string filename, GenderEnum gender, EmotionEnum emotion) {
                 this.Image = Image.FromFile(filename);
-
-                // TODO: load gender and emtion information
+                this.Gender = gender;
+                this.Emotion = emotion;
             }
 
             //--- MethoBds ---
@@ -84,8 +84,16 @@ namespace MagicNightAzureApplication {
         }
 
         private async void DownloadAndClassifyImages(Action doneLoading) {
+
+            var dummy = 0;
+
             foreach(var filename in Directory.EnumerateFiles("C:\\MindTouch\\MagicNightCognitiveServices\\images")) {
-                _images.Add(new AnalyzedImage(filename));
+
+                // TODO: determine gender & emtion for image
+                var gender = (GenderEnum)(dummy % 2) + 1;
+                var emotion = (EmotionEnum)(dummy % 8) + 1;
+                _images.Add(new AnalyzedImage(filename, gender, emotion));
+                ++dummy;
             }
 
             ///
