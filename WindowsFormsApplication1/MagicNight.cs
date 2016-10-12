@@ -56,7 +56,7 @@ namespace MagicNightAzureApplication {
 
         //--- Constructors ---
         public MagicNight(PictureBox[] pictureBoxes, Action doneLoading) {
-            _analyzer = new ImageUploader("", "");
+            _analyzer = new ImageUploader("","");
             _pictureBoxes = pictureBoxes;
             DownloadAndClassifyImages(() => {
                 ChangeFilters(GenderEnum.All, EmotionEnum.All);
