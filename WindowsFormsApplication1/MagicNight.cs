@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using WindowsFormsApplication1;
 
 namespace MagicNightAzureApplication {
 
@@ -54,6 +55,7 @@ namespace MagicNightAzureApplication {
 
         //--- Constructors ---
         public MagicNight(PictureBox[] pictureBoxes, Action doneLoading) {
+            var analyzer = new ImageUploader(key1, emotionApiKey);
             _pictureBoxes = pictureBoxes;
             DownloadAndClassifyImages(() => {
                 ChangeFilters(GenderEnum.All, EmotionEnum.All);
@@ -83,13 +85,12 @@ namespace MagicNightAzureApplication {
             }
         }
 
-        private async void DownloadAndClassifyImages(Action doneLoading) {
+        private void DownloadAndClassifyImages(Action doneLoading) {
 
             var dummy = 0;
+            foreach(var filename in Directory.EnumerateFiles("C:\\Users\\Admin\\magicnight\\MagicNightCognitiveServices\\images")) {
 
-            foreach(var filename in Directory.EnumerateFiles("C:\\MindTouch\\MagicNightCognitiveServices\\images")) {
-
-                // TODO: determine gender & emtion for image
+                // TODO: determine gender & emotion for image
                 var gender = (GenderEnum)(dummy % 2) + 1;
                 var emotion = (EmotionEnum)(dummy % 8) + 1;
                 _images.Add(new AnalyzedImage(filename, gender, emotion));
