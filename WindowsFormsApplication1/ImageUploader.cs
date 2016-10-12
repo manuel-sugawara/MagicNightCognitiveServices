@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Threading.Tasks;
-using MagicNightAzureApplication;
 using Microsoft.ProjectOxford.Emotion;
 using Microsoft.ProjectOxford.Emotion.Contract;
 using Microsoft.ProjectOxford.Face;
-using Microsoft.ProjectOxford.Face.Contract;
 
 namespace WindowsFormsApplication1 {
+
     public class ImageMetaData {
         public readonly string Gender;
         public readonly string Emotion;
@@ -22,14 +17,6 @@ namespace WindowsFormsApplication1 {
     }
 
     public class ImageUploader {
-
-        //public static void Main(string[] args) {
-        //    var analyzer = new ImageUploader(args[0], args[1]);
-        //    foreach(var file in Directory.GetFiles(args[3])) {
-        //        var info = await analyzer.AnalyzeImage(file);
-        //        Console.WriteLine("gender:{0}\temotion:{1}");
-        //    }
-        //}
 
         //--- Fields ---
         private readonly IFaceServiceClient _faceServiceClient;

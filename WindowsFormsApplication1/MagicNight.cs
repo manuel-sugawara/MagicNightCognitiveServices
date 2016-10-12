@@ -52,10 +52,11 @@ namespace MagicNightAzureApplication {
         //--- Fields ---
         private readonly PictureBox[] _pictureBoxes;
         private readonly List<AnalyzedImage> _images = new List<AnalyzedImage>();
+        private ImageUploader _analyzer;
 
         //--- Constructors ---
         public MagicNight(PictureBox[] pictureBoxes, Action doneLoading) {
-            var analyzer = new ImageUploader(key1, emotionApiKey);
+            _analyzer = new ImageUploader("", "");
             _pictureBoxes = pictureBoxes;
             DownloadAndClassifyImages(() => {
                 ChangeFilters(GenderEnum.All, EmotionEnum.All);
@@ -85,16 +86,18 @@ namespace MagicNightAzureApplication {
             }
         }
 
-        private void DownloadAndClassifyImages(Action doneLoading) {
-
-            var dummy = 0;
-            foreach(var filename in Directory.EnumerateFiles("C:\\Users\\Admin\\magicnight\\MagicNightCognitiveServices\\images")) {
+        private async void DownloadAndClassifyImages(Action doneLoading) {
+//            var path = "C:\\Users\\Admin\\magicnight\\MagicNightCognitiveServices\\images";
+            var path = "C:\\MindTouch\\MagicNightCognitiveServices\\images";
+            foreach(var filename in Directory.EnumerateFiles(path)) {
+                var info = await _analyzer.AnalyzeImage(filename);
 
                 // TODO: determine gender & emotion for image
-                var gender = (GenderEnum)(dummy % 2) + 1;
-                var emotion = (EmotionEnum)(dummy % 8) + 1;
-                _images.Add(new AnalyzedImage(filename, gender, emotion));
-                ++dummy;
+                GenderEnum gender;
+                Enum.TryParse(info.Gender, out gender);
+                EmotionEnum emotion;
+                Enum.TryParse(info.Emotion, out emotion);
+                _images.Add(new AnalyzedImage(filename,  gender, emotion));
             }
 
             ///
