@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 namespace MagicNightAzureApplication {
+
     public partial class Form1 : System.Windows.Forms.Form {
         private readonly MagicNight _magicNight;
 
@@ -21,7 +22,7 @@ namespace MagicNightAzureApplication {
         }
 
         private void ResizePictureBoxes(object sender = null, EventArgs e = null) {
-            int width = (this.Width - 54) / 3;
+            var width = (this.Width - 54) / 3;
             var hieght = this.Height - 108;
             var y = 57;
             pictureBox1.Width = pictureBox2.Width = pictureBox3.Width = width;
